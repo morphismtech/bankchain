@@ -33,6 +33,6 @@ Bank Operation
 * Suspension & Termination
   * We want insolvent banks to be terminated and liquidated vaults given to depositors
   * We want illiquid but solvent banks to be able to temporarily suspend redemption
-  * Add a {suspensionClause: <contract>} field to fiduciary tokenURIs
+  * Add a suspensionClause contract to fiduciary tokenURIs
   * This resembles the option clauses used by Scottish banks which offered a high interest in case of suspension and resumed redeemability after a few months time
-  * Suspension acts as a kind of "insurance" against bank runs and should be rarely invoked
+  * Suspension acts as a kind of "insurance" against bank runs for solven banks and should be rarely invoked
