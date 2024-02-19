@@ -10,7 +10,7 @@ Architecture
   * Bank Hardware
 
 Banks
-* Own Bitcoin (and other layer-1 cryptos) vault(s) on bankchain
+* Own and operate Bitcoin (and other layer-1 cryptos) vault(s) on bankchain
 * Associated ERC-20 stablecoin token(s) on the EVM "backed" by the vault(s)
 * ERC-4626 yield bearing share tokens with stablecoin asset tokens on the EVM
 * EVM tokens will have a tokenURI
