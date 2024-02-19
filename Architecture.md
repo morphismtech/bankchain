@@ -1,6 +1,6 @@
 Architecture
 
-Protocol will consists of two parts
+Protocol will consist of two parts
 * Fiduciary token protocol runs on EVM (Ethereum)
 * Redemption & Bank operation protocol runs on a Cosmos sidechain
 
