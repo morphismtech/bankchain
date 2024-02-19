@@ -1,8 +1,10 @@
 Architecture
 
 * Protocol
-  * Fiduciary token protocol runs on EVM (Ethereum)
-  * Redemption & Bank operation protocol runs on a bankchain (Cosmos sidechain)
+  * Fiduciary token protocol
+    * runs on EVM (Ethereum)
+  * Redemption & Bank operation protocol
+    * runs on bankchain (Cosmos sidechain)
 * Bank Service
   * Bank Software
   * Bank Hardware
@@ -36,7 +38,7 @@ Bank Operation
 * Happens on bankchain
 * Banks can create, transfer, suspend, unsuspend and terminate vaults
 * Suspension & Termination
-  * We want insolvent banks to be terminated and liquidated vaults given to depositors
+  * We want insolvent banks to be terminated and liquidated vaults as well as owner stakes given to depositors
   * We want illiquid but solvent banks to be able to temporarily suspend redemption
   * Add a "suspensionClause" contract field to fiduciary tokenURIs
   * This resembles the option clauses used by Scottish banks which offered a high interest in case of suspension and resumed redeemability after a few months time
