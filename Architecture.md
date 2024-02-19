@@ -21,6 +21,10 @@ Banks
 * These tokens are "fiduciary" tokens, they involve trust because the EVM will not enforce the term structures of the contract
 * Fiduciary tokens can act as bank accounts
 * Banks consume bank services to manage and trade their tokens
+* Banks are auditable
+  * vaults and fiduciary tokens onchain
+* Banks are accountable
+  * redemption of fiduciary tokens
 
 Redemption
 * Anyone may deposit fiduciary tokens for redemption on bankchain
