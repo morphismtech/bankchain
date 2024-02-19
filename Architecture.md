@@ -3,7 +3,7 @@ Architecture
 * Protocol
   * Fiduciary token protocol
     * runs on EVM (Ethereum)
-  * Redemption & Vault operation protocol
+  * Redemption & vault operation protocol
     * runs on bankchain (Cosmos sidechain)
 * Bank Service
   * Bank Software
@@ -11,15 +11,16 @@ Architecture
 
 Banks
 * Own and operate Bitcoin (and other layer-1 cryptos) vault(s) on bankchain
-* Associated ERC-20 stablecoin token(s) on the EVM "backed" by the vault(s)
-* ERC-4626 yield bearing share tokens with stablecoin asset tokens on the EVM
-* EVM tokens will have a tokenURI
-  * containing a JSON object
-  * with a "contract" field
-  * and a "suspensionClause" field
-  * encoding two different term structures of yield bearing contracts
-* These tokens are "fiduciary" tokens, they involve trust because the EVM will not enforce the term structures of the contract
-* Fiduciary tokens can act as bank accounts
+* Banks issue fiduciary tokens
+  * Two different fiduciary token types
+    * Vault backed ERC-20 stablecoin tokens on the EVM
+    * Stablecoin asset backed ERC-4626 yield bearing share tokens on the EVM
+  * Fiduciary tokens have a tokenURI with onchain JSON object metadata
+    * with a "contract" field
+    * and a "suspensionClause" field
+    * encoding two different term structures of (possibly 0) yield bearing contracts
+  * The EVM will not enforce the term structures of the contract
+  * Fiduciary tokens can act as bank accounts
 * Banks consume bank services to manage and trade their tokens
 * Banks are auditable
   * vaults and fiduciary tokens onchain
@@ -61,8 +62,8 @@ Bank Software
   * And transferring them to be assets for fiduciary share tokens
   * According to fiduciary contract obligations
 * Dapp
-  * Bank privilege level
-  * Customer privilege level
+  * Bank level
+  * Customer level
 
 Bank Hardware
 * Polymer banknotes
