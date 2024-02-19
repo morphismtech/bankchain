@@ -38,7 +38,7 @@ Bank Operation
 * Happens on bankchain
 * Banks can create, transfer, suspend, unsuspend and terminate vaults
 * Suspension & Termination
-  * We want insolvent banks to be terminated and liquidated vaults as well as bank owner stakes transferred to depositors
+  * We want insolvent banks to be terminated and their vaults and stakes transferred to depositors
   * We want illiquid but solvent banks to be able to temporarily suspend redemption
   * Add a "suspensionClause" contract field to fiduciary tokenURIs
   * This resembles the option clauses used by Scottish banks which offered a high interest in case of suspension and resumed redeemability after a few months time
