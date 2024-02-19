@@ -42,7 +42,7 @@ Vault Operation
   * We want illiquid but solvent banks to be able to temporarily suspend redemption
   * Suspending switches fiduciary duty to the suspensionClause contract
   * Unsuspending switches back
-  * This resembles the option clauses used by Scottish banks which offered a high interest in case of suspension and resumed redeemability after a few months time
+  * This is modeled on the option clauses used by Scottish banks which offered a high interest in case of suspension and resumed redeemability after a few months time
   * Suspension acts as a kind of "insurance" against bank runs for solvent banks
 
 Bank Software
