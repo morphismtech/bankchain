@@ -11,7 +11,7 @@ Banks
 * Own Bitcoin (and other layer-1 cryptos) vault(s) on bankchain
 * Associated ERC-20 stablecoin token(s) on the EVM "backed" by the vault(s)
 * ERC-4626 yield bearing share tokens with stablecoin asset tokens
-* All of these tokens will have a tokenURI containing a JSON object which encodes the term structure of the yield bearing token, as a "contract"
+* All of these tokens will have a tokenURI containing a JSON object which encodes the term structure of the yield bearing token, in its "contract" field
 * These tokens are "fiduciary" tokens, they involve trust because the EVM will not enforce the term structure of the contract
 * Fiduciary tokens can act as bank accounts
 * Polymer banknotes
@@ -38,7 +38,7 @@ Bank Operation
 * Suspension & Termination
   * We want insolvent banks to be terminated and liquidated vaults given to depositors
   * We want illiquid but solvent banks to be able to temporarily suspend redemption
-  * Add a suspensionClause contract to fiduciary tokenURIs
+  * Add a "suspensionClause" contract field to fiduciary tokenURIs
   * This resembles the option clauses used by Scottish banks which offered a high interest in case of suspension and resumed redeemability after a few months time
   * Suspension acts as a kind of "insurance" against bank runs for solvent banks
 
