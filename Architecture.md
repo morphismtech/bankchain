@@ -50,7 +50,7 @@ Bank Software
 * Server
   * Automates minting of stablecoins
   * And transferring them to be assets for fiduciary share tokens
-  * According to fiduciary contracts
+  * According to fiduciary obligations
 * Dapp
   * Bank privilege level
   * Customer privilege level
