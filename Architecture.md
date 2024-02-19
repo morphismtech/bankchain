@@ -16,11 +16,7 @@ Banks
 * All of these tokens will have a tokenURI containing a JSON object which encodes the term structure of the yield bearing token, in its "contract" field
 * These tokens are "fiduciary" tokens, they involve trust because the EVM will not enforce the term structure of the contract
 * Fiduciary tokens can act as bank accounts
-* Polymer banknotes
-  * counterfeit countermeasures
-  * visible public addresses
-  * tamper-evident secret key
-  * 0 yield fiduciary token
+* Banks consume bank services to manage and trade their tokens
 
 Redemption
 * Anyone may deposit fiduciary tokens on bankchain
@@ -55,10 +51,20 @@ Bank Software
   * Customer privilege level
 
 Bank Hardware
+* Polymer banknotes
+  * counterfeit countermeasures
+  * denominated value
+  * unique branded artistic design
+  * space for visible public addresses
+  * tamper-evident seal and space for concealed secret key
+  * space for fiduciary contract
 * Banknote Creator
-  * Preprinted identical polymer banknote stack physical input
-  * Adds public address to notes
-  * And secret key with tamper evident seal
+  * banknote stack input
+  * for each note
+    * prints fiduciary contract
+    * prints public address
+    * prints secret key
+    * applies tamper evident seal
   * Transfers fiduciary tokens to notes
 * Banknote Redeemer
   * Banknote input
