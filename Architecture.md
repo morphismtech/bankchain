@@ -55,9 +55,9 @@ Bank Hardware
   * counterfeit countermeasures
   * denominated value
   * unique branded artistic design
+  * space for fiduciary contract
   * space for visible public addresses
   * tamper-evident seal and space for concealed secret key
-  * space for fiduciary contract
 * Banknote Creator
   * banknote stack input
   * for each note
