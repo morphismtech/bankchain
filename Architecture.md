@@ -35,8 +35,6 @@ Redemption
   * Economizing on layer-1 transfers
   * Redemptions transfer out of the vaults to depositors
   * Then the redeemed fiduciary tokens are burned on the EVM
-* Redemption is the enforcement mechanism for fiduciary tokens
-* Since vaults and fiduciary tokens are tracked onchain, strong auditability
 
 Vault Operation
 * Banks can create, transfer, suspend, unsuspend and terminate vaults
