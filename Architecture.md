@@ -22,7 +22,7 @@ Redemption
 * Daily clearance
   * Based on the term structures
   * All redeemable deposited tokens are valued
-  * Only the differences in what depositors owe/own are redeemed out of the vaults
+  * Only the differences in what depositors owe/own are redeemed out of the vaults, economizing on layer-1 transfers
   * Then the redeemed fiduciary tokens are burned on the EVM
 * Redemption is the enforcement mechanism for fiduciary tokens
 * Since vaults and fiduciary tokens are tracked onchain, strong auditability
