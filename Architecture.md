@@ -23,7 +23,7 @@ Banks
 * Banks consume bank services to manage and trade their tokens
 
 Redemption
-* Anyone may deposit fiduciary tokens on bankchain
+* Anyone may deposit fiduciary tokens for redemption on bankchain
 * Daily clearance
   * Based on the term structures
   * All redeemable deposited tokens are valued
