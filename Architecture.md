@@ -6,9 +6,9 @@ Protocol will consists of two parts
 
 Banks
 * Own Bitcoin (and other layer-1 cryptos) vault(s) on sidechain
-* Associated ERC-20 stablecoin(s) on the EVM "backed" by the vault(s)
-* For each stablecoin, ERC-4626 yield bearing tokens
-* Each of these tokens will have a tokenURI containing a JSON object which encodes the term structure of the yield bearing token, as a "contract"
+* Associated ERC-20 stablecoin token(s) on the EVM "backed" by the vault(s)
+* ERC-4626 yield bearing share tokens with stablecoin asset tokens
+* All of these tokens will have a tokenURI containing a JSON object which encodes the term structure of the yield bearing token, as a "contract"
 * These tokens are "fiduciary" tokens, they involve trust because the EVM will not enforce the term structure of the contract
 * Fiduciary tokens can act as bank accounts
 * Polymer banknotes
