@@ -24,7 +24,7 @@ Redemption
   * All redeemable deposited tokens are valued
   * Only the differences in what depositors total owed - owe are redeemed
   * Economizing on layer-1 transfers
-  * redemptions transfer out of the vaults to depositors
+  * Redemptions transfer out of the vaults to depositors
   * Then the redeemed fiduciary tokens are burned on the EVM
 * Redemption is the enforcement mechanism for fiduciary tokens
 * Since vaults and fiduciary tokens are tracked onchain, strong auditability
