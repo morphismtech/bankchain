@@ -88,3 +88,4 @@ Bank Hardware
   * Simplified Dapp screen interface
   * Withdraw and deposit banknotes
   * Includes Banknote redeemer for accepted rival banknotes
+* Bankcards, Bankchecks, et cetera
