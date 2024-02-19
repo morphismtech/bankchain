@@ -45,7 +45,7 @@ Vault Operation
     * Suspend a vault
     * Bank can't transferFrom the vault
     * Suspending switches fiduciary duty to the suspensionClause contract
-    * Unsuspending switches back
+    * Unsuspending switches back, re-enables transferFrom
     * Modeled on the option clauses used by Scottish banks
       * high interest and briskly resumed redeemability
     * Acts as "insurance" against bank runs for solvent banks
