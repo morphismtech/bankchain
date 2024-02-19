@@ -40,13 +40,17 @@ Vault Operation
 * Banks can create, transfer, suspend, unsuspend and terminate vaults
 * Suspension & Termination
   * Empty vaults can be no-fault terminated
-  * We want insolvent banks to be terminated and their vaults and stakes transferred to depositors
-  * We want illiquid but solvent banks to be able to temporarily suspend redemption
-  * Suspending switches fiduciary duty to the suspensionClause contract
-  * Unsuspending switches back
-  * Modeled on the option clauses used by Scottish banks
-    * high interest and briskly resumed redeemability
-  * Suspension acts as a kind of "insurance" against bank runs for solvent banks
+  * Insolvent banks can
+    * Terminate a vault
+    * Depositors have six months to deposit fiduciary tokens on bankchain
+    * Vault funds and bank stakes are transferred to depositors
+  * Illiquid banks can
+    * Suspend a vault
+    * Suspending switches fiduciary duty to the suspensionClause contract
+    * Unsuspending switches back
+    * Modeled on the option clauses used by Scottish banks
+      * high interest and briskly resumed redeemability
+    * Acts as "insurance" against bank runs for solvent banks
 
 Bank Software
 * Server
