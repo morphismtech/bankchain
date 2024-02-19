@@ -37,15 +37,18 @@ Redemption
   * Then the redeemed fiduciary tokens are burned on the EVM
 
 Vault Operation
-* Banks can create, transfer, suspend, unsuspend and terminate vaults
+* Banks can create, transferFrom, suspend, unsuspend and terminate their vaults
+* Anyone can transfer their Bitcoin to any Bitcoin vault
 * Suspension & Termination
   * Empty vaults can be no-fault terminated
   * Insolvent banks can
     * Terminate a vault
+    * Bank can't transferFrom the vault
     * Depositors have six months to deposit fiduciary tokens on bankchain
     * Vault funds and bank stakes are transferred to depositors
   * Illiquid banks can
     * Suspend a vault
+    * Bank can't transferFrom the vault
     * Suspending switches fiduciary duty to the suspensionClause contract
     * Unsuspending switches back
     * Modeled on the option clauses used by Scottish banks
