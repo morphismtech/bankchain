@@ -41,11 +41,6 @@ Vault Operation
 * Anyone can transfer their Bitcoin to any Bitcoin vault
 * Suspension & Termination
   * Empty vaults can be no-fault terminated
-  * Insolvent banks can
-    * Terminate a vault
-    * Bank can't transferFrom the vault
-    * Depositors have six months to deposit fiduciary tokens on bankchain
-    * Vault funds and bank stakes are transferred to depositors
   * Illiquid banks can
     * Suspend a vault
     * Bank can't transferFrom the vault
@@ -54,6 +49,11 @@ Vault Operation
     * Modeled on the option clauses used by Scottish banks
       * high interest and briskly resumed redeemability
     * Acts as "insurance" against bank runs for solvent banks
+  * Insolvent banks can
+    * Terminate a vault that is suspended
+    * Bank still can't transferFrom the vault
+    * Depositors have six months to deposit fiduciary tokens on bankchain
+    * Vault funds and bank stakes are transferred to depositors
 
 Bank Software
 * Server
