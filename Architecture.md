@@ -29,6 +29,9 @@ Banks
 * Banks consume bank services to manage and trade their tokens
 * Banks are auditable
   * vaults and fiduciary tokens onchain
+* Banks are reputable
+  * through staked tokens on bankchain
+  * and branding
 * Banks are accountable
   * redemption of fiduciary tokens
 
@@ -58,7 +61,7 @@ Vault Operation
     * Terminate a vault that is suspended
     * Bank still can't transferFrom the vault
     * Depositors have six months to deposit fiduciary tokens on bankchain
-    * Vault funds and bank stakes are transferred to depositors
+    * Vault tokens and bank stake tokens are transferred to depositors
 
 Bank Software
 * Server
