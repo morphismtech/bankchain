@@ -21,7 +21,7 @@ Banks
     * with a "contract" field
     * and a "suspensionClause" field
     * encoding two different term structures of yield bearing contracts
-    * for stablecoins "contract" is "one BTC"
+    * for stablecoins "contract" is {"type": "one", "currency": "BTC"}
       - contract that pays 1 BTC on demand
       - to holder of 1 unit of the stablecoin
   * The EVM will not enforce the term structures of the contract
