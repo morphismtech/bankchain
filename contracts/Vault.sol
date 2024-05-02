@@ -8,26 +8,36 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 
 contract Vault is IERC4626, ERC20Burnable {
+    address private owner;
+    ERC20 private immutable _asset;
+    uint256 private _totalAssets;
+    mapping(address => uint256) private _shares;
 
-  ERC20 private immutable _asset;
-  uint256 private _totalAssets;
-  mapping(address => uint256) private _shares;
+    constructor(
+        ERC20 asset_,
+        string memory name_,
+        string memory symbol_
+    ) ERC20(name_, symbol_) {
+        _asset = asset_;
+    }
 
-  constructor(
-    ERC20 asset_,
-    string memory name_,
-    string memory symbol_
-  ) ERC20(name_, symbol_) {
-    _asset = asset_;
-  }
+    /**
+     * Modifier onlyOwner checks if the owner is the msg.sender.
+     * Prevents external users from gaining access to the assets or shares of others.
+     */
+    modifier onlyOwner() {
+        require(msg.sender == owner);
+        _;
+    }
+
     /**
      * @dev Returns the address of the underlying token used for the Vault for accounting, depositing, and withdrawing.
      *
      * - MUST be an ERC-20 token contract.
      * - MUST NOT revert.
      */
-    function asset() external view returns (address assetTokenAddress){
-      return address(_asset);
+    function asset() external view returns (address assetTokenAddress) {
+        return address(_asset);
     }
 
     /**
@@ -37,8 +47,8 @@ contract Vault is IERC4626, ERC20Burnable {
      * - MUST be inclusive of any fees that are charged against assets in the Vault.
      * - MUST NOT revert.
      */
-    function totalAssets() external view returns (uint256 totalManagedAssets){
-      return _totalAssets;
+    function totalAssets() external view returns (uint256 totalManagedAssets) {
+        return _totalAssets;
     }
 
     /**
@@ -54,8 +64,10 @@ contract Vault is IERC4626, ERC20Burnable {
      * “average-user’s” price-per-share, meaning what the average user should expect to see when exchanging to and
      * from.
      */
-    function convertToShares(uint256 assets) external view returns (uint256 shares){
-      return assets * this.totalSupply() / _totalAssets;
+    function convertToShares(
+        uint256 assets
+    ) external view onlyOwner returns (uint256 shares) {
+        return (assets * this.totalSupply()) / _totalAssets;
     }
 
     /**
@@ -71,8 +83,10 @@ contract Vault is IERC4626, ERC20Burnable {
      * “average-user’s” price-per-share, meaning what the average user should expect to see when exchanging to and
      * from.
      */
-    function convertToAssets(uint256 shares) external view returns (uint256 assets){
-      return shares * _totalAssets / this.totalSupply();
+    function convertToAssets(
+        uint256 shares
+    ) external view onlyOwner returns (uint256 assets) {
+        return (shares * _totalAssets) / this.totalSupply();
     }
 
     /**
@@ -83,9 +97,11 @@ contract Vault is IERC4626, ERC20Burnable {
      * - MUST return 2 ** 256 - 1 if there is no limit on the maximum amount of assets that may be deposited.
      * - MUST NOT revert.
      */
-    function maxDeposit(address receiver) external pure returns (uint256 maxAssets){
-      console.log(receiver);
-      return 2 ** 256 - 1;
+    function maxDeposit(
+        address receiver
+    ) external pure returns (uint256 maxAssets) {
+        console.log(receiver);
+        return 2 ** 256 - 1;
     }
 
     /**
@@ -103,8 +119,10 @@ contract Vault is IERC4626, ERC20Burnable {
      * NOTE: any unfavorable discrepancy between convertToShares and previewDeposit SHOULD be considered slippage in
      * share price or some other type of condition, meaning the depositor will lose assets by depositing.
      */
-    function previewDeposit(uint256 assets) external view returns (uint256 shares){
-      return assets * this.totalSupply() / _totalAssets;
+    function previewDeposit(
+        uint256 assets
+    ) external view returns (uint256 shares) {
+        return (assets * this.totalSupply()) / _totalAssets;
     }
 
     /**
@@ -118,14 +136,17 @@ contract Vault is IERC4626, ERC20Burnable {
      *
      * NOTE: most implementations will require pre-approval of the Vault with the Vault’s underlying asset token.
      */
-    function deposit(uint256 assets, address receiver) external returns (uint256 shares){
-      _totalAssets += assets;
-      uint256 newShares = assets * this.totalSupply() / _totalAssets;
-      _shares[address(msg.sender)] += newShares;
-      _asset.transfer(address(this), assets);
-      this.transfer(receiver, assets);
-      emit Deposit(address(msg.sender),receiver,assets,assets);
-      return assets;
+    function deposit(
+        uint256 assets,
+        address receiver
+    ) external returns (uint256 shares) {
+        _totalAssets += assets;
+        uint256 newShares = (assets * this.totalSupply()) / _totalAssets;
+        _shares[address(msg.sender)] += newShares;
+        _asset.transfer(address(this), assets);
+        this.transfer(receiver, assets);
+        emit Deposit(address(msg.sender), receiver, assets, assets);
+        return assets;
     }
 
     /**
@@ -134,9 +155,11 @@ contract Vault is IERC4626, ERC20Burnable {
      * - MUST return 2 ** 256 - 1 if there is no limit on the maximum amount of shares that may be minted.
      * - MUST NOT revert.
      */
-    function maxMint(address receiver) external pure returns (uint256 maxShares){
-      console.log(receiver);
-      return 2 ** 256 - 1;
+    function maxMint(
+        address receiver
+    ) external pure returns (uint256 maxShares) {
+        console.log(receiver);
+        return 2 ** 256 - 1;
     }
 
     /**
@@ -154,8 +177,10 @@ contract Vault is IERC4626, ERC20Burnable {
      * NOTE: any unfavorable discrepancy between convertToAssets and previewMint SHOULD be considered slippage in
      * share price or some other type of condition, meaning the depositor will lose assets by minting.
      */
-    function previewMint(uint256 shares) external view returns (uint256 assets){
-      return shares * _totalAssets / this.totalSupply();
+    function previewMint(
+        uint256 shares
+    ) external view returns (uint256 assets) {
+        return (shares * _totalAssets) / this.totalSupply();
     }
 
     /**
@@ -169,14 +194,17 @@ contract Vault is IERC4626, ERC20Burnable {
      *
      * NOTE: most implementations will require pre-approval of the Vault with the Vault’s underlying asset token.
      */
-    function mint(uint256 shares, address receiver) external returns (uint256 assets){
-      uint256 _assets = shares * _totalAssets / this.totalSupply();
-      _totalAssets += assets;
-      _shares[address(msg.sender)] += shares;
-      _asset.transfer(address(this), _assets);
-      this.transfer(receiver, shares);
-      emit Deposit(address(msg.sender),receiver,shares,shares);
-      return _assets;
+    function mint(
+        uint256 shares,
+        address receiver
+    ) external onlyOwner returns (uint256 assets) {
+        uint256 _assets = (shares * _totalAssets) / this.totalSupply();
+        _totalAssets += assets;
+        _shares[address(msg.sender)] += shares;
+        _asset.transfer(address(this), _assets);
+        this.transfer(receiver, shares);
+        emit Deposit(address(msg.sender), receiver, shares, shares);
+        return _assets;
     }
 
     /**
@@ -187,8 +215,10 @@ contract Vault is IERC4626, ERC20Burnable {
      * - MUST return balanceOf(owner) if owner is not subject to any withdrawal limit or timelock.
      * - MUST NOT revert.
      */
-    function maxRedeem(address owner) external view returns (uint256 maxShares){
-      return _shares[owner];
+    function maxRedeem(
+        address owner
+    ) external view returns (uint256 maxShares) {
+        return _shares[owner];
     }
 
     /**
@@ -206,8 +236,10 @@ contract Vault is IERC4626, ERC20Burnable {
      * NOTE: any unfavorable discrepancy between convertToAssets and previewRedeem SHOULD be considered slippage in
      * share price or some other type of condition, meaning the depositor will lose assets by redeeming.
      */
-    function previewRedeem(uint256 shares) external view returns (uint256 assets){
-      return shares * _totalAssets / this.totalSupply();
+    function previewRedeem(
+        uint256 shares
+    ) external view returns (uint256 assets) {
+        return (shares * _totalAssets) / this.totalSupply();
     }
 
     /**
@@ -226,11 +258,11 @@ contract Vault is IERC4626, ERC20Burnable {
         uint256 shares,
         address receiver,
         address owner
-    ) external returns (uint256 assets){
+    ) external onlyOwner returns (uint256 assets) {
         require(_shares[msg.sender] > 0, "Not a share holder");
         _shares[msg.sender] -= shares;
         _burn(msg.sender, shares);
-        assets = shares * _totalAssets / this.totalSupply();
+        assets = (shares * _totalAssets) / this.totalSupply();
         _asset.transfer(receiver, assets);
         emit Withdraw(msg.sender, receiver, owner, assets, shares);
         return assets;
@@ -243,7 +275,9 @@ contract Vault is IERC4626, ERC20Burnable {
      * - MUST return a limited value if owner is subject to some withdrawal limit or timelock.
      * - MUST NOT revert.
      */
-    function maxWithdraw(address owner) external view returns (uint256 maxAssets){}
+    function maxWithdraw(
+        address owner
+    ) external view returns (uint256 maxAssets) {}
 
     /**
      * @dev Allows an on-chain or off-chain user to simulate the effects of their withdrawal at the current block,
@@ -261,8 +295,9 @@ contract Vault is IERC4626, ERC20Burnable {
      * NOTE: any unfavorable discrepancy between convertToShares and previewWithdraw SHOULD be considered slippage in
      * share price or some other type of condition, meaning the depositor will lose assets by depositing.
      */
-    function previewWithdraw(uint256 assets
-    ) external view returns (uint256 shares){}
+    function previewWithdraw(
+        uint256 assets
+    ) external view returns (uint256 shares) {}
 
     /**
      * @dev Burns shares from owner and sends exactly assets of underlying tokens to receiver.
@@ -280,14 +315,13 @@ contract Vault is IERC4626, ERC20Burnable {
         uint256 assets,
         address receiver,
         address owner
-    ) external returns (uint256 shares){
+    ) external onlyOwner returns (uint256 shares) {
         require(_shares[msg.sender] > 0, "Not a share holder");
-        shares = assets * this.totalSupply() / _totalAssets;
+        shares = (assets * this.totalSupply()) / _totalAssets;
         _shares[msg.sender] -= shares;
         _burn(msg.sender, shares);
         _asset.transfer(receiver, assets);
         emit Withdraw(msg.sender, receiver, owner, assets, shares);
         return shares;
     }
-
 }
