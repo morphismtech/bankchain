@@ -25,7 +25,7 @@ Banks
       - contract that pays 1 BTC on demand
       - to holder of 1 unit of the stablecoin
   * The EVM will not enforce the term structures of the contract
-  * Fiduciary tokens can act as bank accounts
+  * Fiduciary yield-bearing tokens can act as bank accounts
 * Banks consume bank services to manage and trade their tokens
 * Banks are auditable
   * vaults and fiduciary tokens onchain
@@ -87,7 +87,7 @@ Bank Hardware
     * prints public address
     * prints secret key
     * applies tamper evident seal
-  * Transfers fiduciary tokens to notes
+  * Transfers fiduciary stablecoin tokens to notes
 * Banknote Redeemer
   * Banknote input
   * Secret key revealed
