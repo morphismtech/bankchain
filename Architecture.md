@@ -15,7 +15,7 @@ Banks
 * Banks will own and operate Bitcoin (and other layer-1 cryptos) vault(s) on bankchain
 * Banks issue fiduciary tokens
   * Two different fiduciary token types
-    * Vault backed ERC-20 stablecoin tokens on the EVM
+    * Vault backed [ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) stablecoin tokens on the EVM
     * Stablecoin asset backed ERC-4626 yield bearing share tokens on the EVM
   * Fiduciary tokens have a tokenURI with onchain JSON object metadata
     * with a "contract" field
