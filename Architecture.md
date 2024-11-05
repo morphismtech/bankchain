@@ -18,22 +18,23 @@ Banks
     * Bank currency
       * [ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) tokens on EVM
       * Stablecoin asset tokens
-      * Bankchain vault asset backed
+      * Redemption in BTC on bankchain
     * Bank deposit account
       * [ERC-4626](https://ethereum.org/en/developers/docs/standards/tokens/erc-4626/) tokens on EVM
       * Yield bearing share tokens
-      * Bank currency stablecoin asset backed
+  * Redemption
+    * discretionary (KYC)
+      * in BTC for bank depositors
+    * nondiscretionary
+      * in stablecoin bank currency on EVM
+      * in BTC on bankchain
   * Fiduciary tokens have a tokenURI with onchain JSON object metadata
     * with a "contract" field
     * and a "suspensionClause" field
     * encoding two different term structures of yield bearing contracts
     * for stablecoins "contract" is {"type": "one", "currency": "BTC"}
-      - contract that pays 1 BTC on demand
-      - to holder of 1 unit of the stablecoin
-  * The EVM will not enforce the term structures of the contract
-  * Banks can redeem customers at their discretion (KYC)
-  * But unsuspended vaults will redeem bankchain depositors daily
-  * The bankchain will redeem according to the term structures of the contract
+      * contract that pays 1 BTC on demand
+      * to holder of 1 unit of the stablecoin
 * Banks consume bank services to manage and trade their tokens
 * Banks are auditable
   * vaults and fiduciary tokens onchain
